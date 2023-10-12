@@ -6,7 +6,7 @@
 /*   By: igaguila <igaguila@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 11:27:56 by igaguila          #+#    #+#             */
-/*   Updated: 2023/10/11 18:28:19 by igaguila         ###   ########.fr       */
+/*   Updated: 2023/10/12 23:12:38 by igaguila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	main(void)
 {
 	char chr = 'A';
 	char *str = "Pepe";
-	int num = 345;
-	ft_printf("hola %c que %d tal %s\n", chr, num, str);
-	printf("hola %c que %d tal %s\n", chr, num, str);
+	int num = 2555555;
+	ft_printf("hola %c que %x %X tal %s\n", chr, num, num, str);
+	printf("hola %c que %x %X tal %s\n", chr, num, num, str);
 }
