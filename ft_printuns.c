@@ -1,30 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_printuns.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: igaguila <igaguila@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/04 14:59:27 by igaguila          #+#    #+#             */
-/*   Updated: 2023/10/13 16:05:43 by igaguila         ###   ########.fr       */
+/*   Created: 2023/10/13 13:52:28 by igaguila          #+#    #+#             */
+/*   Updated: 2023/10/13 13:56:55 by igaguila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
 
-# include <stdio.h>
-# include <stdarg.h>
-# include <stdlib.h>
-# include <unistd.h>
-# include <stdint.h>
-//# include "libft/libft.h"
+static void ft_putchar_fd(char c, int fd)
+{
+	write(fd, &c, 1);
+}
 
-void    ft_printptr(uintptr_t n);
-void    ft_printuns(unsigned int n);
-void    ft_printupperhex(int n);
-void    ft_printlowerhex(int n);
-void    ft_varprint(char c, void *ptr);
-int     ft_printf(char const *s, ...);
-
-#endif
+void    ft_printuns(unsigned int n)
+{
+	if (n >= 10)
+		ft_printuns(n / 10);
+	ft_putchar_fd((n % 10) + '0', 1);
+}

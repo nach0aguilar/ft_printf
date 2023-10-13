@@ -6,7 +6,7 @@
 /*   By: igaguila <igaguila@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 14:57:34 by igaguila          #+#    #+#             */
-/*   Updated: 2023/10/12 23:28:52 by igaguila         ###   ########.fr       */
+/*   Updated: 2023/10/13 16:05:30 by igaguila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +52,12 @@ void    ft_varprint(char c, void *ptr)
         ft_putchar_fd((int)(intptr_t)ptr, 1);
     else if (c == 's')
         ft_putstr_fd((char *)ptr, 1);
-    // else if (c == 'p')
-    //     c;
+    else if (c == 'p')
+        ft_printptr((uintptr_t)ptr);
     else if (c == 'd' || c == 'i')
         ft_putnbr_fd((int)(intptr_t)ptr, 1);
-    // else if (c == 'u')
-    //     c;
+    else if (c == 'u')
+        ft_printuns((unsigned int)(intptr_t)ptr);
     else if (c == 'x')
         ft_printlowerhex((int)(intptr_t)ptr);
     else if (c == 'X')
