@@ -6,12 +6,12 @@
 #    By: igaguila <igaguila@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/03 11:24:06 by igaguila          #+#    #+#              #
-#    Updated: 2023/10/13 13:58:16 by igaguila         ###   ########.fr        #
+#    Updated: 2023/10/13 18:20:33 by igaguila         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRC 			= 	ft_printf.c ft_varprint.c ft_printlowerhex.c \
-					ft_printupperhex.c ft_printuns.c
+					ft_printupperhex.c ft_printuns.c ft_printptr.c
 
 OBJS			= 	${SRC:.c=.o}
 
@@ -23,3 +23,18 @@ CFLAGS			= 	-Wall -Wextra -Werror
 
 RM				= 	rm -f
 
+all: ${NAME}
+
+${NAME}: ${OBJS}
+	ar rcs ${NAME} ${OBJS}
+
+clean:
+	${RM} ${OBJS}
+
+fclean:
+	${RM} ${OBJS}
+	${RM} ${NAME}
+
+re:	fclean all
+
+.PHONY: all clean fclean re

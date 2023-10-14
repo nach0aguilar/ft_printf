@@ -6,16 +6,11 @@
 /*   By: igaguila <igaguila@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 16:00:09 by igaguila          #+#    #+#             */
-/*   Updated: 2023/10/13 16:44:59 by igaguila         ###   ########.fr       */
+/*   Updated: 2023/10/14 20:21:42 by igaguila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-static void ft_putchar_fd(char c, int fd)
-{
-	write(fd, &c, 1);
-}
 
 static void	ft_putstr_fd(char *s, int fd)
 {
@@ -29,27 +24,25 @@ static void	ft_putstr_fd(char *s, int fd)
 	}
 }
 
-static int		ft_len(int n)
+static int	ft_len(uintptr_t n)
 {
 	int	i;
 
 	i = 0;
-	while (n > 0)
+	while (n != 0)
 	{
-		n /= 16;
 		i++;
+		n /= 16;
 	}
 	return (i);
 }
 
-static char		*ft_converter(int n)
+static char	*ft_converter(uintptr_t n)
 {
 	char	*hex;
-	char 	*s;
+	char	*s;
 	int		len;
-	
-	if (n < 0)
-		n *= -1;
+
 	hex = "0123456789abcdef";
 	len = ft_len(n);
 	s = (char *)malloc(sizeof(char) * (len + 1));
@@ -58,25 +51,23 @@ static char		*ft_converter(int n)
 	s[len] = '\0';
 	while (len >= 0)
 	{
-		s[len - 1] = hex[n % 16];
+		s[--len] = hex[n % 16];
 		n /= 16;
-		len--;
 	}
-	s[len] = hex[n];
 	return (s);
 }
 
-void    ft_printptr(uintptr_t n)
+int	ft_printptr(uintptr_t n)
 {
-	char	*hex;
 	char	*s;
 
-    ft_putstr_fd("0x", 1);	
-	hex = "0123456789abcdef";
+	if (n == 0)
+	{
+		ft_putstr_fd("(nil)", 1);
+		return (5);
+	}
+	ft_putstr_fd("0x", 1);
 	s = ft_converter(n);
-	if (n > 15)
-		ft_putstr_fd(s, 1);
-	else
-		ft_putchar_fd(hex[n], 1);
-	
+	ft_putstr_fd(s, 1);
+	return (ft_len(n) + 2);
 }
