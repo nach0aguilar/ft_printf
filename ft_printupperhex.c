@@ -6,7 +6,7 @@
 /*   By: igaguila <igaguila@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 21:26:29 by igaguila          #+#    #+#             */
-/*   Updated: 2023/10/14 20:37:26 by igaguila         ###   ########.fr       */
+/*   Updated: 2023/10/15 20:09:49 by igaguila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,11 +55,10 @@ static char	*ft_converter(unsigned int n)
 	if (!s)
 		return (NULL);
 	s[len] = '\0';
-	while (len >= 0)
+	while (--len >= 0)
 	{
-		s[len - 1] = hex[n % 16];
+		s[len] = hex[n % 16];
 		n /= 16;
-		len--;
 	}
 	return (s);
 }
@@ -72,5 +71,6 @@ int	ft_printupperhex(unsigned int n)
 		return (ft_putchar_fd('0', 1));
 	s = ft_converter(n);
 	ft_putstr_fd(s, 1);
+	free(s);
 	return (ft_len(n));
 }
