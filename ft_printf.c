@@ -6,7 +6,7 @@
 /*   By: igaguila <igaguila@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 11:27:56 by igaguila          #+#    #+#             */
-/*   Updated: 2023/10/15 17:44:08 by igaguila         ###   ########.fr       */
+/*   Updated: 2023/10/23 08:49:47 by igaguila         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,3 @@ int	ft_printf(char const *s, ...)
 	va_end(arguments);
 	return (count);
 }
-
-// int	main(void)
-// {
-// 	ft_printf(" %p %p ", 0, 0);
-// 	printf(" %p %p ", (void *)0, (void *)0);
-// }
